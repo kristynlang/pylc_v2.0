@@ -1,5 +1,75 @@
+# PyLC Landscape Classifier v2.0
 
-# PyLC Landscape Classifier
+Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model archtiectures, loss functions, and image perprocessing techniques are being explored. 
+
+**[Daily Task Tracking](https://docs.google.com/document/d/14WEHnOiB5-jRA62bygKZIxYILUjUEGftn5_aWGAjKAc/edit#)**
+
+## Datasets
+
+Training data used to generate the pretrained segmentation models is comprised of high-resolution historic (grayscale) photographs, and repeat (colour) images from the MLP collection. Land cover segmentation maps, manually created by MLP researchers, were used as ground truth labels. These datasets are publicly available and released through the [Creative Commons Attribution-Non Commercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/legalcode).
+
+Segmentation masks used in the two training datasets (DST.A and DST.B) conform to different land cover classification schemas, as shown below. The categories are defined in schema files `schema_a.json` and `schema_b.json`, that correspond to DST.A and DST.B respectively.
+
+### DST.A - [(Repository - 2.1 GB)](https://zenodo.org/record/12590) 
+
+The Mountain Habitats Segmentation and Change Detection Dataset. Jean, Frédéric; Branzan Albu, Alexandra; Capson, David; Higgs, Eric; Fisher, Jason T.; Starzomski, Brian M.  Includes full-sized images and segmentation masks along with the accompanying files and results. See [Reference](#ref-1).
+
+#### [DST.A] Land Cover Classes
+| **Hex**  |  **Colour** | **Category** | 
+|-------------|-------------|-------------|
+| ![#f03c15](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
+| ![#ffa500](https://via.placeholder.com/15/ffa500/000000?text=+) |Orange | Broadleaf/Mixedwood forest| 
+| ![#228b22](https://via.placeholder.com/15/228b22/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Light Green| Herbaceous/Shrub| 
+| ![#8b4513](https://via.placeholder.com/15/8b4513/000000?text=+)  |Brown| Sand/gravel/rock| 
+| ![#5f9ea0](https://via.placeholder.com/15/5f9ea0/000000?text=+) |Turquoise| Wetland| 
+| ![#5f9ea0](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
+| ![#2dbdff](https://via.placeholder.com/15/2dbdff/000000?text=+) |Light Blue| Snow/Ice| 
+| ![#ff0004](https://via.placeholder.com/15/ff0004/000000?text=+) |Red| Regenerating area| 
+
+### DST.B: [Repository TBA] 
+
+Landscape and biodiversity change in the Willmore Wilderness Park through Repeat Photography. Julie Fortin (2018). See [Reference](#ref-2).
+
+#### DST-B Land Cover Categories (LCC-B)
+
+| **Hex**  |  **Colour** | **Category** | 
+|-------------|-------------|-------------|
+| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
+| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
+| ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
+| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Light Green| Shrub| 
+| ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
+| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
+| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
+| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
+| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
+| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
+
+### Other Available Datasets
+
+### DST.D - [(Repository - 5 image pairs)](https://www.flickr.com/photos/msanseve/sets/72157715101019692/)
+
+#### DST-D Land Cover Categories (LCC-D)
+
+| **Hex**  |  **Colour** | **Category** | 
+|-------------|-------------|-------------|
+| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
+| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
+| ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
+| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Light Green| Shrub| 
+| ![#ffff7f](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
+| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
+| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
+| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
+| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
+| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
+| ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red| Settlement area|
+| ![#8000ff](https://via.placeholder.com/15/8000ff/000000?text=+) |Purple| Agriculture|
+
+# PyLC Landscape Classifier (Original)
 
 __Semantic segmentation for land cover classification of oblique ground-based photography__
 
