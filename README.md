@@ -60,8 +60,8 @@ Landscape and biodiversity change in the Willmore Wilderness Park through Repeat
 | ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
 | ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
 | ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
-| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
-| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Light Green| Shrub| 
+| ![#00ff00](https://via.placeholder.com/15/00ff00/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Olive Green| Shrub| 
 | ![#ffff7f](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
 | ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
 | ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
@@ -70,6 +70,25 @@ Landscape and biodiversity change in the Willmore Wilderness Park through Repeat
 | ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
 | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red| Settlement area|
 | ![#8000ff](https://via.placeholder.com/15/8000ff/000000?text=+) |Purple| Agriculture|
+
+### DST.E - [(Repository - 6 image pairs)](https://drive.google.com/drive/folders/1FMzWgfrx_sztxjdIGpfeq4OumjHD5hC-?usp=sharing)
+
+#### DST-D Land Cover Categories (LCC-D)
+
+| **Hex**  |  **Colour** | **Category** | 
+|-------------|-------------|-------------|
+| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| y
+| ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red | Broadleaf forest| 
+| ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) |Yellow | Mixedwood forest| 
+| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#969600](https://via.placeholder.com/15/969600/000000?text=+) |Olive Green| Shrub| y
+| ![#ff9b00](https://via.placeholder.com/15/ff9b00/000000?text=+) |Orange| Herbaceous| 
+| ![#7d0000](https://via.placeholder.com/15/7d0000/000000?text=+) |Brown| Sand/gravel/rock| 
+| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
+| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| y
+| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
+| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area|  
+
 
 # PyLC Landscape Classifier (Original)
 
