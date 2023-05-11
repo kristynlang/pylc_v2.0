@@ -1,6 +1,6 @@
 # PyLC Landscape Classifier v2.0
 
-Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model archtiectures, loss functions, and image perprocessing techniques are being explored. 
+Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model archtiectures, loss functions, and image preprocessing techniques are being explored. 
 
 Collaborators: Kristyn Lang, Larissa Bron, Claire Wright, Kate Fryer, Eric Higgs
 
