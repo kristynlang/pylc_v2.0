@@ -2,7 +2,7 @@
 
 Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model archtiectures, loss functions, and image perprocessing techniques are being explored. 
 
-Collaborators: Kristyn Lang, Larissa Bron, Claire Wright, Kate Fryer, Eric Hiiggs
+Collaborators: Kristyn Lang, Larissa Bron, Claire Wright, Kate Fryer, Eric Higgs
 
 **[Daily Task Tracking](https://docs.google.com/document/d/14WEHnOiB5-jRA62bygKZIxYILUjUEGftn5_aWGAjKAc/edit#)**
 
