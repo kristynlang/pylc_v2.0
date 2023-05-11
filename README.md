@@ -82,7 +82,7 @@ Landscape and biodiversity change in the Willmore Wilderness Park through Repeat
 | ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) |Yellow | Mixedwood forest| 
 | ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
 | ![#969600](https://via.placeholder.com/15/969600/000000?text=+) |Olive Green| Shrub| y
-| ![#ff9b00](https://via.placeholder.com/15/ff9b00/000000?text=+) |Orange| Herbaceous| 
+| ![#ee9900](https://via.placeholder.com/15/ee9900/000000?text=+) |Orange| Herbaceous| 
 | ![#7d0000](https://via.placeholder.com/15/7d0000/000000?text=+) |Brown| Sand/gravel/rock| 
 | ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
 | ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| y
