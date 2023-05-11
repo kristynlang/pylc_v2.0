@@ -80,13 +80,12 @@ Landscape and biodiversity change in the Willmore Wilderness Park through Repeat
 | ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| y
 | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red | Broadleaf forest| 
 | ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) |Yellow | Mixedwood forest| 
-| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
+| ![#00ff00](https://via.placeholder.com/15/00ff00/000000?text=+) |Light Green| Coniferous forest| 
 | ![#969600](https://via.placeholder.com/15/969600/000000?text=+) |Olive Green| Shrub| y
-| ![#ee9900](https://via.placeholder.com/15/ee9900/000000?text=+) |Orange| Herbaceous| 
-| ![#7d0000](https://via.placeholder.com/15/7d0000/000000?text=+) |Brown| Sand/gravel/rock| 
+| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange| Herbaceous| 
+| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
 | ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
 | ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| y
-| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
 | ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area|  
 
 
