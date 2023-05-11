@@ -25,7 +25,7 @@ The Mountain Habitats Segmentation and Change Detection Dataset. Jean, Frédéri
 | ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Light Green| Herbaceous/Shrub| 
 | ![#8b4513](https://via.placeholder.com/15/8b4513/000000?text=+)  |Brown| Sand/gravel/rock| 
 | ![#5f9ea0](https://via.placeholder.com/15/5f9ea0/000000?text=+) |Turquoise| Wetland| 
-| ![#5f9ea0](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
+| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
 | ![#2dbdff](https://via.placeholder.com/15/2dbdff/000000?text=+) |Light Blue| Snow/Ice| 
 | ![#ff0004](https://via.placeholder.com/15/ff0004/000000?text=+) |Red| Regenerating area| 
 
