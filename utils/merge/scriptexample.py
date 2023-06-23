@@ -2,6 +2,7 @@
 # Data Handling Utilities
 # ===========================
 
+#leave these the same, just the python packages we need to run the script
 import os, sys, glob, math, json
 import numpy as np
 import torch
@@ -16,7 +17,11 @@ from scipy.signal import savgol_filter
 # Parameters
 # ===========================
 
-# merged scheme categories
+#set the name of the file to merge_datasetname.py [insert name of dataset] you will import this into merge_class.ipynb as this filename
+
+# merged scheme categories - these stay the same for all conversions -- unless a category is added
+# this is PyLC's cateogrization scheme with correct colours
+
 categories_lcc_a = {
     '#000000': 'Not categorized',
     '#ffa500': 'Broadleaf/Mixedwood',
@@ -27,18 +32,20 @@ categories_lcc_a = {
     '#0000ff': 'Water',
     '#2dbdff': 'Snow/Ice',
     '#ff0004': 'Regenerating Area',
+    #If adding a category put it here and define the hex code and label for the colour you would like it to be
 }
 
 labels_lcc_a = [
-    'Not categorized',
-    'Broadleaf/Mixedwood',
-    'Coniferous',
-    'Herbaceous/Shrub',
-    'Sand/Gravel/Rock',
-    'Wetland',
-    'Water',
-    'Snow/Ice',
-    'Regenerating Area',
+    'Not categorized', #index 0
+    'Broadleaf/Mixedwood', #index 1
+    'Coniferous', #index 2
+    'Herbaceous/Shrub', #index 3
+    'Sand/Gravel/Rock', #index 4
+    'Wetland', #index 5
+    'Water', #index 6
+    'Snow/Ice', #index 7
+    'Regenerating Area', #index 8
+    #Add the label for new category #would be index 9
 ]
 
 palette_lcc_a = np.array(
@@ -51,69 +58,75 @@ palette_lcc_a = np.array(
  [0, 0, 255],
  [45, 189, 255],
  [255, 0, 4],
+ #Add the RGB array associated with the desired hex code, this can be calculated using the function in the second cell of merge_class.ipynb
  ])
 
-#fortin categories and colors
+#categories and colors of the image you want to merge - include every category and color used
 
 mask_categories = {
 '#000000':'Not categorized',
-'#ffa500':'Broadleaf/mixedwood forest',
-'#228b22':'Coniferous forest',
-'#7cfc00':'Herbaceous/shrub',
-'#8b4513':'Barren rock',
-'#d35d0e':'Infrastructure',
-'#5f9ea0':'Wetland',
+'#ffaa00':'Broadleaf forest',
+'#d5d500':'Mixedwood forest',
+'#005500':'Coniferous forest',
+'#41dc66':'Shrub',
+'#ffff7f':'Herbaceous',
+'#873434':'Rock',
+'#aaaaff':'Wetland',
 '#0000ff':'Water',
-'#2dbdff':'Snow/Ice',
-'#ff0004':'Regenerating Area',
+'#b0fffd':'Snow/Ice',
+'#ff00ff':'Regenerating Area',
 }
         
 category_labels = [
-'Not categorized',
-'Broadleaf/mixedwood forest',
-'Coniferous forest',
-'Herbaceous/shrub',
-'Barren grouond',
-'Infrastructure',
-'Wetland',
-'Water',
-'Snow/Ice',
-'Burn']
+'Not categorized', #index 0
+'Broadleaf forest', #index 1
+'Mixedwood forest', #index 2
+'Coniferous forest', #index 3
+'Shrub', #index 4
+'Herbaceous', #index 5
+'Rock', #index 6
+'Wetland', #index 7
+'Water', #index 8
+'Snow/Ice', #index 9
+'Regenerating Area'] #index 10
 
+#find RBG arrays using the function in merge_class.ipynb, hex codes can be grabbed from a program like affinity photo (can also get rgb codes this way -- python is easier)
 palette_original = np.array(
-[[0, 0, 0],
-[255, 165, 0],
-[34, 139, 34],
-[124, 252, 0],
-[139, 69, 19],
-[211, 93, 14],
-[95, 158, 160],
-[0, 0, 255],
-[45, 189, 255],
-[255, 0, 4],
-])
+[[0, 0, 0], 
+ [255, 170, 0], 
+ [213, 213, 0],
+ [0, 85, 0],
+ [65, 220, 102],
+ [255, 255, 127],
+ [135, 52, 52],
+ [170, 170, 255],
+ [0, 0, 255],
+ [176, 255, 253],
+ [255, 0, 255],
+ ])
 
-# merged classes
+# merged classes, the number contained in np.array([x)) corresponds to the index that contains the category in the original dataset and puts it into the index of the corresponding category it matches in the target scheme (in this case lcc_a). The index of each category is labeled in category labels, but is easily findable by counting each element starting at 0 for the first element.
 categories_merged = [
-    np.array([0]),
-    np.array([1]),
-    np.array([2]),
-    np.array([3]),
-    np.array([4,5]),
+    np.array([0]), #not categorized (lcc_a) index 0, not categorized (original) index 0 - maps the same categories together, changes the color if there is a color difference
+    np.array([1,2]), #broadleaf/mixedwood index 1 in lcc_a, broaleaf (index 1) and mixedwood (index 2) in example, this combines both classes and tells the code the corresponding colors in the original need to both change to the rgb code for this index in lcc_a.
+    np.array([3]), #again maps same categories together
+    np.array([4,5]), #combines seperate categories herbaceous and shrub in example to match the color and category herbaceous/shrub in lcc_a for PyLC
     np.array([6]),
     np.array([7]),
     np.array([8]),
-    np.array([9])
+    np.array([9]),
+    np.array([10])
 ]
 
-
 # Merged classes
+#which categorization scheme we want the merged dataset to match - always lcc_a when working with PyLC
 palette_merged = palette_lcc_a
 
 mask_categories_merged = categories_lcc_a
 
 category_labels_merged = labels_lcc_a
 
+#do not worry about these details if working with this script for image conversion, only the function starting at line 193 is important so scroll down there
 # size of the output feature map
 output_size = 324
 
@@ -180,7 +193,10 @@ def colourize(img_data, palette):
 def merge_classes(data):
 
     # get merged classes boolean
-    uncat_idx = np.isin(data, categories_merged[0])
+    #checks which colors/categories in the mask need to be merged to match the category they are being mapped to, this stays the same unless adding a class to PyLC
+    #categories_merged is from line 109
+    
+    uncat_idx = np.isin(data, categories_merged[0]) 
     bmix_idx = np.isin(data, categories_merged[1])
     con_idx = np.isin(data, categories_merged[2])
     herbshrub_idx = np.isin(data, categories_merged[3])
@@ -189,6 +205,8 @@ def merge_classes(data):
     water_idx = np.isin(data, categories_merged[6])
     snowice_idx = np.isin(data, categories_merged[7])
     reg_idx = np.isin(data, categories_merged[8])
+    #add class, code will look like:
+    #newclass_idx = np.isin(data, categories_merged[9])
     
     # merge classes
     data[uncat_idx] = 0
@@ -200,8 +218,12 @@ def merge_classes(data):
     data[water_idx] = 6
     data[snowice_idx] = 7
     data[reg_idx] = 8
+    #add new class here too
+    #data[newclass_idx] = 9
 
     return data
+
+#don't worry about this, all functions to merge categories and plot - do not change
 
 # Convert RBG mask array to class-index encoded values
 # input form: NCWH with RGB-value encoding, where C = RGB (3)
