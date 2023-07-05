@@ -1,100 +1,13 @@
 # PyLC Landscape Classifier v2.0
 
-Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model archtiectures, loss functions, and image preprocessing techniques are being explored. 
-
-Collaborators: Kristyn Lang, Larissa Bron, Claire Wright, Kate Fryer, Eric Higgs
-
-**[Daily Task Tracking](https://docs.google.com/document/d/14WEHnOiB5-jRA62bygKZIxYILUjUEGftn5_aWGAjKAc/edit#)**
-
-## Datasets
-
-Training data used to generate the pretrained segmentation models is comprised of high-resolution historic (grayscale) photographs, and repeat (colour) images from the MLP collection. Land cover segmentation maps, manually created by MLP researchers, were used as ground truth labels. These datasets are publicly available and released through the [Creative Commons Attribution-Non Commercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/legalcode).
-
-Segmentation masks used in the two training datasets (DST.A and DST.B) conform to different land cover classification schemas, as shown below. The categories are defined in schema files `schema_a.json` and `schema_b.json`, that correspond to DST.A and DST.B respectively.
-
-### DST.A - [(Repository - 2.1 GB)](https://zenodo.org/record/12590) 
-
-The Mountain Habitats Segmentation and Change Detection Dataset. Jean, Frédéric; Branzan Albu, Alexandra; Capson, David; Higgs, Eric; Fisher, Jason T.; Starzomski, Brian M.  Includes full-sized images and segmentation masks along with the accompanying files and results. See [Reference](#ref-1).
-
-#### [DST.A] Land Cover Classes
-| **Hex**  |  **Colour** | **Category** | 
-|-------------|-------------|-------------|
-| ![#f03c15](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
-| ![#ffa500](https://via.placeholder.com/15/ffa500/000000?text=+) |Orange | Broadleaf/Mixedwood forest| 
-| ![#228b22](https://via.placeholder.com/15/228b22/000000?text=+) |Dark Green| Coniferous forest| 
-| ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Light Green| Herbaceous/Shrub| 
-| ![#8b4513](https://via.placeholder.com/15/8b4513/000000?text=+)  |Brown| Sand/gravel/rock| 
-| ![#5f9ea0](https://via.placeholder.com/15/5f9ea0/000000?text=+) |Turquoise| Wetland| 
-| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
-| ![#2dbdff](https://via.placeholder.com/15/2dbdff/000000?text=+) |Light Blue| Snow/Ice| 
-| ![#ff0004](https://via.placeholder.com/15/ff0004/000000?text=+) |Red| Regenerating area| 
-
-### DST.B: [Repository](https://drive.google.com/file/d/1ALkR1T45Jv0OJO-mKk3hKDF14XrLfLkI/view?usp=sharing)
-
-Landscape and biodiversity change in the Willmore Wilderness Park through Repeat Photography. Julie Fortin (2018). See [Reference](#ref-2).
-
-#### DST-B Land Cover Categories (LCC-B)
-
-| **Hex**  |  **Colour** | **Category** | 
-|-------------|-------------|-------------|
-| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
-| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
-| ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
-| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
-| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Light Green| Shrub| 
-| ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
-| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
-| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
-| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
-| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
-| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
-
-### Other Available Datasets
-
-### DST.D - [(Repository - 5 image pairs)](https://www.flickr.com/photos/msanseve/sets/72157715101019692/)
-
-#### DST-D Land Cover Categories (LCC-D)
-
-| **Hex**  |  **Colour** | **Category** | 
-|-------------|-------------|-------------|
-| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
-| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
-| ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
-| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
-| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Olive Green| Shrub| 
-| ![#ffff7f](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
-| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
-| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
-| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
-| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
-| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
-| ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red| Settlement area|
-| ![#8000ff](https://via.placeholder.com/15/8000ff/000000?text=+) |Purple| Agriculture|
-
-### DST.E - [(Repository - 6 image pairs)](https://drive.google.com/drive/folders/1FMzWgfrx_sztxjdIGpfeq4OumjHD5hC-?usp=sharing)
-
-#### DST-D Land Cover Categories (LCC-D)
-
-| **Hex**  |  **Colour** | **Category** | 
-|-------------|-------------|-------------|
-| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| y
-| ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) |Red | Broadleaf forest| 
-| ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) |Yellow | Mixedwood forest| 
-| ![#00ee00](https://via.placeholder.com/15/00ee00/000000?text=+) |Light Green| Coniferous forest| 
-| ![#969600](https://via.placeholder.com/15/969600/000000?text=+) |Olive Green| Shrub| y
-| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange| Herbaceous| 
-| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
-| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
-| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| y
-| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area|  
-
-
-# PyLC Landscape Classifier (Original)
-
 __Semantic segmentation for land cover classification of oblique ground-based photography__
 
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+
+Repository contains everything needed to run PyLC, including new datasets and image preprocessing instructions. PyLC v2.0 is being created to improve model performance for classification on historical grayscale images. Other model architectures, loss functions, and image preprocessing techniques are being explored. 
+
+Collaborators (v2.0): Kristyn Lang, Larissa Bron, Claire Wright, Kate Fryer, Eric Higgs
 
  Reference: Rose, Spencer, _An evaluation of deep learning semantic segmentation
  for land cover classification of oblique ground-based photography_,
@@ -115,7 +28,7 @@ PyTorch implementation of Deeplab: This is a PyTorch(0.4.1) implementation of De
 
 ### Implementation
 
-PyLC uses deep convolutional neural networks (DCNNs) trained on high-resolution, grayscale and colour landscape photography from the MLP collection, specifically optimized for the segmentation of oblique mountain landscapes. This package uses [U-net](ref-3) and [Deeplabv3+](#ref-4) segmentation models with a ResNet101 pretrained encoder, as well as a fully-connected [conditional random fields model](#ref-5) used to boost segmentation accuracy.
+PyLC uses deep convolutional neural networks (DCNNs) trained on high-resolution, grayscale and colour landscape photography from the MLP collection, specifically optimized for the segmentation of oblique mountain landscapes. This package uses [U-net](ref-4) and [Deeplabv3+](#ref-5) segmentation models with a ResNet101 pretrained encoder, as well as a fully-connected [conditional random fields model](#ref-7) used to boost segmentation accuracy.
 
 ### Features
 
@@ -126,15 +39,23 @@ PyLC uses deep convolutional neural networks (DCNNs) trained on high-resolution,
 
 ## Datasets
 
-Training data used to generate the pretrained segmentation models is comprised of high-resolution historic (grayscale) photographs, and repeat (colour) images from the MLP collection. Land cover segmentation maps, manually created by MLP researchers, were used as ground truth labels. These datasets are publicly available and released through the [Creative Commons Attribution-Non Commercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/legalcode).
+Training data used to generate the pretrained segmentation models is comprised of high-resolution historic (grayscale) photographs, and grayscaled repeat (colour) images from the MLP collection. Land cover segmentation maps, manually created by MLP researchers, were used as ground truth labels. These datasets are publicly available and released through the [Creative Commons Attribution-Non Commercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/legalcode).
 
-Segmentation masks used in the two training datasets (DST.A and DST.B) conform to different land cover classification schemas, as shown below. The categories are defined in schema files `schema_a.json` and `schema_b.json`, that correspond to DST.A and DST.B respectively.
+Segmentation masks used in the training datasets conform to different land cover classification schemas. These schemas are described in detail [here](https://docs.google.com/spreadsheets/d/1hoETdLEM5VlAI0T7wLzS9dZVotSBIjezb6bnjZ6-5f8/edit#gid=1971148706). All masks are converted to the PyLC schema (previously LCC.A/schema a) using the merge_classes.ipynb notebook in the merging folder.
 
-### DST.A - [(Repository - 2.1 GB)](https://zenodo.org/record/12590) 
+The following datasets are included in training and/or testing data for PyLC v2.0:
 
 The Mountain Habitats Segmentation and Change Detection Dataset. Jean, Frédéric; Branzan Albu, Alexandra; Capson, David; Higgs, Eric; Fisher, Jason T.; Starzomski, Brian M.  Includes full-sized images and segmentation masks along with the accompanying files and results. See [Reference](#ref-1).
 
-#### [DST.A] Land Cover Classes
+Landscape and biodiversity change in the Willmore Wilderness Park through Repeat Photography. Fortin, Julie (2018). See [Reference](#ref-2).
+
+When the flame goes out: an exploration of landscape change using repeat photography related to indigenous burning in Kananaskis Country, Alberta. Frederickson, Maya (2022). See [Reference](#ref-3).
+
+A century of landscape-level changes in the Bow Watershed, Alberta, Canada, and implications for flood management. Taggart-Hodge, Tanya (2016). See [Reference](#ref-6).
+
+PyLC uses the following land cover classification schema. The categories are defined in the schema file 'schema_a.json'. 
+
+#### PyLC Land Cover Classes
 | **Hex**  |  **Colour** | **Category** | 
 |-------------|-------------|-------------|
 | ![#f03c15](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
@@ -143,31 +64,11 @@ The Mountain Habitats Segmentation and Change Detection Dataset. Jean, Frédéri
 | ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Light Green| Herbaceous/Shrub| 
 | ![#8b4513](https://via.placeholder.com/15/8b4513/000000?text=+)  |Brown| Sand/gravel/rock| 
 | ![#5f9ea0](https://via.placeholder.com/15/5f9ea0/000000?text=+) |Turquoise| Wetland| 
-| ![#5f9ea0](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
+| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
 | ![#2dbdff](https://via.placeholder.com/15/2dbdff/000000?text=+) |Light Blue| Snow/Ice| 
 | ![#ff0004](https://via.placeholder.com/15/ff0004/000000?text=+) |Red| Regenerating area| 
 
-### DST.B: [Repository TBA] 
-
-Landscape and biodiversity change in the Willmore Wilderness Park through Repeat Photography. Julie Fortin (2018). See [Reference](#ref-2).
-
-#### DST-B Land Cover Categories (LCC-B)
-
-| **Hex**  |  **Colour** | **Category** | 
-|-------------|-------------|-------------|
-| ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |Black | Not categorized| 
-| ![#ffaa00](https://via.placeholder.com/15/ffaa00/000000?text=+) |Orange | Broadleaf forest| 
-| ![#d5d500](https://via.placeholder.com/15/d5d500/000000?text=+) |Dark Yellow | Mixedwood forest| 
-| ![#005500](https://via.placeholder.com/15/005500/000000?text=+) |Dark Green| Coniferous forest| 
-| ![#41dc66](https://via.placeholder.com/15/41dc66/000000?text=+) |Light Green| Shrub| 
-| ![#7cfc00](https://via.placeholder.com/15/7cfc00/000000?text=+) |Green| Herbaceous| 
-| ![#873434](https://via.placeholder.com/15/873434/000000?text=+) |Brown| Sand/gravel/rock| 
-| ![#aaaaff](https://via.placeholder.com/15/aaaaff/000000?text=+) |Light Purple| Wetland| 
-| ![#0000ff](https://via.placeholder.com/15/0000ff/000000?text=+) |Blue| Water| 
-| ![#b0fffd](https://via.placeholder.com/15/b0fffd/000000?text=+) |Cyan| Snow/Ice| 
-| ![#ff00ff](https://via.placeholder.com/15/ff00ff/000000?text=+) |Magenta| Regenerating area| 
-
-## Pretrained Models
+## Pretrained Models from Rose (2020)
 
 Pretrained models can be downloaded and used directly with the PyLC tool to generate segmentation maps from high-resolution images. Each model has been trained and optimized using different hyperparameters, and results may differ.
 
@@ -344,8 +245,12 @@ Segmentation maps can be generated for input images. Evaluation metrics can also
 
 [2]<a name="ref-2"></a> Julie Fortin. Landscape and biodiversity change in the Willmore Wilderness Park through Repeat Photography. MSc thesis, University of Victoria, 2015.
 
-[3]<a name="ref-3"></a> Olaf Ronneberger, Philipp Fischer, and Thomas Brox. U-net: Convolutional networks for biomedical image segmentation. Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 9351:234–241, 2015. ISSN 16113349. doi: 10.1007/ 978-3-319-24574-4 28. (http://lmb.informatik.uni-freiburg.de/).
+[3]<a name="ref-3"></a> Maya Frederickson. When the flame goes out: an exploration of landscape change using repeat photography related to Indigenous burning in Kananaskis Country, Alberta. MSc thesis, University of Victoria, 2022.
 
-[4]<a name="ref-4"></a> Liang Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs. IEEE Transactions on Pattern Analysis and Machine Intelligence, 40(4):834–848, 2018. ISSN 01628828. doi: 10.1109/TPAMI.2017.2699184.
+[4]<a name="ref-4"></a> Olaf Ronneberger, Philipp Fischer, and Thomas Brox. U-net: Convolutional networks for biomedical image segmentation. Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 9351:234–241, 2015. ISSN 16113349. doi: 10.1007/ 978-3-319-24574-4 28. (http://lmb.informatik.uni-freiburg.de/).
 
-[5]<a name="ref-5"></a> Philipp Krähenbühl and Vladlen Koltun. Parameter learning and convergent infer- ence for dense random fields. 30th International Conference on Machine Learning, ICML 2013, 28(PART 2):1550–1558, 2013.
+[5]<a name="ref-5"></a> Liang Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and Alan L. Yuille. DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs. IEEE Transactions on Pattern Analysis and Machine Intelligence, 40(4):834–848, 2018. ISSN 01628828. doi: 10.1109/TPAMI.2017.2699184.
+
+[6]<a name="ref-6"></a> Tanya Taggart-Hodge. A century of landscape-level changes in the Bow watershed, Alberta, Canada, and implications for flood management. MSc thesis, University of Victoria, 2016.
+
+[7]<a name="ref-7"></a> Philipp Krähenbühl and Vladlen Koltun. Parameter learning and convergent infer- ence for dense random fields. 30th International Conference on Machine Learning, ICML 2013, 28(PART 2):1550–1558, 2013.
