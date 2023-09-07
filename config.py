@@ -185,7 +185,7 @@ class Parameters:
         self.jsd = 1.
 
         # Network parameters
-        self.pretrained = './data/models/resnet101-5d3b4d8f.pth'
+        self.pretrained = './models/resnet101-5d3b4d8f.pth'
         self.n_epochs = 20
         self.batch_size = 8
         self.dropout = 0.5

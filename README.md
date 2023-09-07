@@ -193,6 +193,7 @@ For example, the following command, using historic database files `db_1.h5` and 
 
 Training or retraining a model requires an extraction or augmented database generated using the preprocessing steps above. Model training is CUDA-enabled. Note that other training hyperparamters can be set in the `config.py` configuration file. Note that files generated for best models and checkpoints (`.pth`), as well as loss logs (`.npy`), are saved to `./data/save/` in a folder labeled by the model ID.
 
+Before training the pretrained weights for ResNet must be downloaded from [here](https://download.pytorch.org/models/resnet101-5d3b4d8f.pth) and saved to the folder ./models/
 
 ##### Options: 
 
