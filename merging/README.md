@@ -6,10 +6,14 @@ To convert more images from either Fortin2018, Frederickson, TaggartHodge Fluvia
 
 ## Steps
 
+If the repository has not been cloned:
 1) Download notebook scripy as .ipynb by right clicking on "raw" button.
 2) Download the category conversion file specific to your dataset as .py by right clicking on "raw" button. Also download scriptexample.py if you want instructions on how to update these scripts.
-3) Check the requirements file and download the necessary packages into your python environment using either conda install example-package or pip install example-package ex. pip install numpy. Note that cv2 is installed as opencv-python. To install a specific version number use conda install numpy==1.24.3, but the most recent versions should be fine. If you do not know what a python environment is or how to set one up see additional steps at the end of these instructions.
-4) To use merge_class.ipynb you will need to make a few small changes to the notebook: First update the root variable to match the folder path you are trying to access on your machine (where the images are located).Then update all of the file paths in the notebook to match the location of the images/masks within your own directory. This includes the variables root, mydir, and img_path and mask_path for testing the merge function.
+
+If you have cloned the repository start at step 4:
+4) Check the requirements.txt file and download the necessary packages into your python environment using either conda install example-package or pip install example-package ex. pip install numpy. Note that cv2 is installed as opencv-python. To install a specific version number use conda install numpy==1.24.3, but the most recent versions should be fine. If you do not know what a python environment is or how to set one up see additional steps at the end of these instructions. You can download all the packages at once using pip install -r requirements.txt    
+6) Open merge_class.ipynb in Jupyter Notebook
+7) To use merge_class.ipynb you will need to make a few small changes to the notebook: First update the root variable to match the folder path you are trying to access on your machine (where the images are located).Then update all of the file paths in the notebook to match the location of the images/masks within your own directory. This includes the variables root, mydir, and img_path and mask_path for testing the merge function.
 
 Merge and save masks section:
 
