@@ -1,6 +1,6 @@
 numpy>=1.24.3
 h5py>=3.7.0
 matplotlib>=3.7.1
-cv2>=4.6.0
+opencv-python
 torch>=2.0.1
 scipy>=1.10.1
